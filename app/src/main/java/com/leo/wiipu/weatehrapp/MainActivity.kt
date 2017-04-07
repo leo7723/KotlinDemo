@@ -28,13 +28,12 @@ class MainActivity : AppCompatActivity() {
 
         val forecastList = findViewById(R.id.forecast_list) as RecyclerView;
         forecastList.layoutManager=LinearLayoutManager(this);
-        forecastList.adapter=ForecastListAdapter(list)
+        forecastList.adapter=ForecastListAdapter(list){toast(it)}
 
-        this.toast("Hello Util",Toast.LENGTH_SHORT)
-
-        toast("Hello Anko")
-
-        longToast(R.id.text)
+        //SAN三个Toast例子
+        //this.toast("Hello Util",Toast.LENGTH_SHORT)
+        //toast("Hello Anko")
+        //longToast(R.id.text)
 
         btn3.setOnClickListener ({startActivity<Main2Activity>()})
 
@@ -44,11 +43,13 @@ class MainActivity : AppCompatActivity() {
         return 3;
     }
 
+    fun ss()=3
+
     fun toast(msg:String,length:Int=Toast.LENGTH_SHORT){
         Toast.makeText(this,msg,length).show();
     }
 
-    fun internet(){
+    fun loadForecast(){
         async {
             val reslut=Request(url).run()
             onUiThread { longToast(reslut) }
