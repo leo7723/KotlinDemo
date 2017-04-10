@@ -8,7 +8,7 @@ import android.widget.TextView
  * RecyclerView.Adapter 实例
  * Created by changliliao on 2017/4/6.
  */
-class ForecastListAdapter (val list:List<String>,
+class ForecastListAdapter (val list:List<Respose.Result>,
                            val itemClick:(String)->Unit):
         RecyclerView.Adapter<ForecastListAdapter.MyHolder>(){
 
@@ -20,7 +20,7 @@ class ForecastListAdapter (val list:List<String>,
     }
 
     override fun onBindViewHolder(holder: MyHolder?, position: Int) {
-        holder?.tv?.text=list[position]
+        holder?.tv?.text=list[position].carrier_code;
         //list.[positon] 这里有坑
     }
 
